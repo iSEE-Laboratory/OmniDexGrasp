@@ -1,0 +1,16 @@
+# MegaPose6D pose estimation model config
+# Reference: thirdparty/megapose6d/README.md Model Zoo recommendations
+
+# Scene (with depth): multi-hypothesis + ICP depth refinement, highest accuracy
+scene_model: "megapose-1.0-RGB-multi-hypothesis-icp"
+
+# Grasp (no depth): multi-hypothesis, no ICP
+grasp_model: "megapose-1.0-RGB-multi-hypothesis"
+
+# Inference parameters
+n_refiner_iterations: 5    # refiner iterations
+n_pose_hypotheses: 5       # number of pose hypotheses (multi-hypothesis K=5)
+
+# GPU memory control (reduce to 32 on OOM)
+bsz_images: 128
+

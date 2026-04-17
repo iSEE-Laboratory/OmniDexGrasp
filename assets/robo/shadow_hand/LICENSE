@@ -187,7 +187,7 @@
       same "printed page" as the copyright notice for easier
       identification within third-party archives.
 
-   Copyright 2026 ISEE Laboratory, Sun Yat-sen University
+   Copyright 2022 Shadow Robot Company Ltd
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -200,3 +200,7 @@
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
+
+The model files we obtained from the previously mentioned source underwent
+significant modifications before we could use them. These modifications
+included changes to the meshes and the URDF file itself.

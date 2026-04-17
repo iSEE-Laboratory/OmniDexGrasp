@@ -1,0 +1,35 @@
+# 🔄 Reconstruction Pipeline Config
+defaults:
+  - model/megapose6d@megapose6d  # load cfg/model/megapose6d.yaml under cfg.megapose6d
+  - _self_
+
+datasets: ../datasets
+output: ../out
+
+servers:
+  gsam: http://localhost:6001/predict
+  hamer: http://localhost:6002/predict
+  timeout: 120
+
+out:
+  vis: true           # 📊 Output visualizations
+  inter_out: true    # 💾 Output intermediate data (detections, vertices)
+
+# 📏 Object scale computation params
+scale:
+  depth_scale: 0.001          # depth.png uint16 → meters (mm * 0.001)
+  max_depth_m: 3.0            # discard depth > 3m
+  edge_erode_px: 3            # erode object mask by N px to remove boundary flying pixels
+  stat_nb_neighbors: 80       # statistical outlier removal: neighbor count
+  stat_std_ratio: 2.0         # statistical outlier removal: std threshold
+
+# 🔧 Hydra output control
+hydra:
+  run:
+    dir: .
+  output_subdir: null
+  job_logging:
+    handlers:
+      file:
+        filename: log/recons.log
+        mode: w

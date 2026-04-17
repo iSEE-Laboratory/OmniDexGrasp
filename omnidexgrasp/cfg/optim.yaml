@@ -1,0 +1,12 @@
+# 🤚 MANO Hand Optimization Config
+datasets: ../datasets
+output: ../out
+easyhoi_root: thirdparty/EasyHOI
+
+out:
+  inter_out: false  # Save intermediate EasyHOI files under data/optim/
+
+hydra:
+  run:
+    dir: .
+  output_subdir: null

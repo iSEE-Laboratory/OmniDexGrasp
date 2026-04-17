@@ -1,0 +1,780 @@
+<?xml version="1.0" ?>
+<robot name="converted_robot">
+   <link name="world">
+      <inertial>
+         <origin xyz="0.0 0.0 0.0" rpy="0 0.0 0"/>
+         <mass value="0.0"/>
+         <inertia ixx="0.0" iyy="0.0" izz="0.0" ixy="0" ixz="0" iyz="0"/>
+      </inertial>
+   </link>
+   <link name="robot0:hand mount">
+      <inertial>
+         <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+         <mass value="0.1"/>
+         <inertia ixx="0.001" iyy="0.001" izz="0.001" ixy="0" ixz="0" iyz="0"/>
+      </inertial>
+   </link>
+   <link name="world2robot0:hand mount_fixed_jointbody">
+      <inertial>
+         <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+         <mass value="0.001"/>
+         <inertia ixx="1e-09" iyy="1e-09" izz="1e-09" ixy="0" ixz="0" iyz="0"/>
+      </inertial>
+   </link>     
+   <joint type="fixed" name="world2robot0:hand mount_fixed">
+      <parent link="world"/>
+      <child link="world2robot0:hand mount_fixed_jointbody"/>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -1.5707963267948966 0.0"/>
+   </joint>
+   <joint type="fixed" name="world2robot0:hand mount_fixed_offset">
+      <parent link="world2robot0:hand mount_fixed_jointbody"/>
+      <child link="robot0:hand mount"/>
+      <origin xyz="-0.0 -0.0 -0.0" rpy="0.0 0.0 0.0"/>
+   </joint>
+   <link name="robot0:palm">
+      <inertial>
+         <origin xyz="0.006 0.0 0.036" rpy="0.16784713124221648 0.04641103986884443 1.5420568046006367"/>
+         <mass value="4.0"/>
+         <inertia ixx="0.01" iyy="0.01" izz="0.0075" ixy="0" ixz="0" iyz="0"/>
+      </inertial>
+      <visual name="robot0:palm">
+         <origin xyz="0.006188630086341022 -0.0006422059367043002 0.036023517307350136" rpy="0.18523084714855362 0.047842548447998734 1.5429462516268304"/>
+         <geometry>
+            <mesh filename="converted_robot0:palm.stl"/>
+         </geometry>
+         <material name="white"/>
+      </visual>
+   </link>
+   <link name="robot0:hand mount2robot0:palm_fixed_jointbody">
+      <inertial>
+         <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+         <mass value="0.001"/>
+         <inertia ixx="1e-09" iyy="1e-09" izz="1e-09" ixy="0" ixz="0" iyz="0"/>
+      </inertial>
+   </link>
+   <joint type="fixed" name="robot0:hand mount2robot0:palm_fixed">
+      <parent link="robot0:hand mount"/>
+      <child link="robot0:hand mount2robot0:palm_fixed_jointbody"/>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+   </joint>
+   <joint type="fixed" name="robot0:hand mount2robot0:palm_fixed_offset">
+      <parent link="robot0:hand mount2robot0:palm_fixed_jointbody"/>
+      <child link="robot0:palm"/>
+      <origin xyz="-0.0 -0.0 -0.0" rpy="0.0 0.0 0.0"/>
+   </joint>
+   <link name="robot0:ffknuckle">
+      <inertial>
+         <origin xyz="0.0 0.0 0.0" rpy="2.0477583421747254 0.011366961427066169 0.007130225047531689"/>
+         <mass value="0.008"/>
+         <inertia ixx="1e-05" iyy="1e-05" izz="1e-05" ixy="0" ixz="0" iyz="0"/>
+      </inertial>
+      <visual name="robot0:knuckle">
+         <origin xyz="-7.984755103175037e-06 0.00018549594562487147 0.00028291811195881977" rpy="2.0471337843138473 0.011288391859240576 0.0072775998130758905"/>
+         <geometry>
+            <mesh filename="converted_robot0:knuckle.stl"/>
+         </geometry>
+         <material name="white"/>
+      </visual>
+   </link>
+   <link name="robot0:FFJ3_jointbody">
+      <inertial>
+         <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+         <mass value="0.001"/>
+         <inertia ixx="1e-09" iyy="1e-09" izz="1e-09" ixy="0" ixz="0" iyz="0"/>
+      </inertial>
+   </link>
+   <joint type="revolute" name="robot0:FFJ3">
+      <parent link="robot0:palm"/>
+      <child link="robot0:FFJ3_jointbody"/>
+      <origin xyz="0.033 0.0 0.095" rpy="0.0 0.0 0.0"/>
+      <axis xyz="0.0 1.0 0.0"/>
+      <limit lower="-0.349" upper="0.349" effort="100" velocity="100"/>
+   </joint>
+   <joint type="fixed" name="robot0:FFJ3_offset">
+      <parent link="robot0:FFJ3_jointbody"/>
+      <child link="robot0:ffknuckle"/>
+      <origin xyz="-0.0 -0.0 -0.0" rpy="0.0 0.0 0.0"/>
+   </joint>
+   <link name="robot0:ffproximal">
+      <inertial>
+         <origin xyz="0.0 0.0 0.023" rpy="0.0 0.011315296524084362 1.5707963267948966"/>
+         <mass value="0.014"/>
+         <inertia ixx="1e-05" iyy="1e-05" izz="1e-05" ixy="0" ixz="0" iyz="0"/>
+      </inertial>
+      <visual name="robot0:F3">
+         <origin xyz="1.2109050075444518e-06 9.761867807593364e-06 0.022880663855845584" rpy="-7.130367859915891e-06 0.011893974846255873 1.5705985128531308"/>
+         <geometry>
+            <mesh filename="converted_robot0:F3.stl"/>
+         </geometry>
+         <material name="white"/>
+      </visual>
+   </link>
+   <link name="robot0:FFJ2_jointbody">
+      <inertial>
+         <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+         <mass value="0.001"/>
+         <inertia ixx="1e-09" iyy="1e-09" izz="1e-09" ixy="0" ixz="0" iyz="0"/>
+      </inertial>
+   </link>
+   <joint type="revolute" name="robot0:FFJ2">
+      <parent link="robot0:ffknuckle"/>
+      <child link="robot0:FFJ2_jointbody"/>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+      <axis xyz="1.0 0.0 0.0"/>
+      <limit lower="0.0" upper="1.571" effort="100" velocity="100"/>
+   </joint>
+   <joint type="fixed" name="robot0:FFJ2_offset">
+      <parent link="robot0:FFJ2_jointbody"/>
+      <child link="robot0:ffproximal"/>
+      <origin xyz="-0.0 -0.0 -0.0" rpy="0.0 0.0 0.0"/>
+   </joint>
+   <link name="robot0:ffmiddle">
+      <inertial>
+         <origin xyz="0.0 0.0 0.011" rpy="0.0 0.0 1.5707963267948963"/>
+         <mass value="0.012"/>
+         <inertia ixx="1e-05" iyy="1e-05" izz="1e-05" ixy="0" ixz="0" iyz="0"/>
+      </inertial>
+      <visual name="robot0:F2">
+         <origin xyz="-2.7107102874988925e-06 -3.218722724901653e-05 0.011475158468883542" rpy="-1.6030408530105524e-05 -0.0002661570742428232 1.5707963267948966"/>
+         <geometry>
+            <mesh filename="converted_robot0:F2.stl"/>
+         </geometry>
+         <material name="white"/>
+      </visual>
+   </link>
+   <link name="robot0:FFJ1_jointbody">
+      <inertial>
+         <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+         <mass value="0.001"/>
+         <inertia ixx="1e-09" iyy="1e-09" izz="1e-09" ixy="0" ixz="0" iyz="0"/>
+      </inertial>
+   </link>
+   <joint type="revolute" name="robot0:FFJ1">
+      <parent link="robot0:ffproximal"/>
+      <child link="robot0:FFJ1_jointbody"/>
+      <origin xyz="0.0 0.0 0.045" rpy="0.0 0.0 0.0"/>
+      <axis xyz="1.0 0.0 0.0"/>
+      <limit lower="0.0" upper="1.571" effort="100" velocity="100"/>
+   </joint>
+   <joint type="fixed" name="robot0:FFJ1_offset">
+      <parent link="robot0:FFJ1_jointbody"/>
+      <child link="robot0:ffmiddle"/>
+      <origin xyz="-0.0 -0.0 -0.0" rpy="0.0 0.0 0.0"/>
+   </joint>
+   <link name="robot0:ffdistal">
+      <inertial>
+         <origin xyz="0.0 0.0 0.015" rpy="-8.673929730061765e-19 0.008486512007798819 1.5707963267948966"/>
+         <mass value="0.01"/>
+         <inertia ixx="1e-05" iyy="1e-05" izz="1e-05" ixy="0" ixz="0" iyz="0"/>
+      </inertial>
+      <visual name="robot0:F1">
+         <origin xyz="7.811151132214205e-09 -4.4263651662937025e-05 0.016242626073421716" rpy="0.0 0.007786172590363849 1.5707963267948966"/>
+         <geometry>
+            <mesh filename="converted_robot0:F1.stl"/>
+         </geometry>
+         <material name="white"/>
+      </visual>
+   </link>
+   <link name="robot0:FFJ0_jointbody">
+      <inertial>
+         <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+         <mass value="0.001"/>
+         <inertia ixx="1e-09" iyy="1e-09" izz="1e-09" ixy="0" ixz="0" iyz="0"/>
+      </inertial>
+   </link>
+   <joint type="revolute" name="robot0:FFJ0">
+      <parent link="robot0:ffmiddle"/>
+      <child link="robot0:FFJ0_jointbody"/>
+      <origin xyz="0.0 0.0 0.025" rpy="0.0 0.0 0.0"/>
+      <axis xyz="1.0 0.0 0.0"/>
+      <limit lower="0.0" upper="1.571" effort="100" velocity="100"/>
+   </joint>
+   <joint type="fixed" name="robot0:FFJ0_offset">
+      <parent link="robot0:FFJ0_jointbody"/>
+      <child link="robot0:ffdistal"/>
+      <origin xyz="-0.0 -0.0 -0.0" rpy="0.0 0.0 0.0"/>
+   </joint>
+   <link name="robot0:mfknuckle">
+      <inertial>
+         <origin xyz="0.0 0.0 0.0" rpy="2.0477583421747254 0.011366961427066169 0.007130225047531689"/>
+         <mass value="0.008"/>
+         <inertia ixx="1e-05" iyy="1e-05" izz="1e-05" ixy="0" ixz="0" iyz="0"/>
+      </inertial>
+      <visual name="robot0:knuckle">
+         <origin xyz="-7.984755103175037e-06 0.00018549594562487147 0.00028291811195881977" rpy="2.0471337843138473 0.011288391859240576 0.0072775998130758905"/>
+         <geometry>
+            <mesh filename="converted_robot0:knuckle.stl"/>
+         </geometry>
+         <material name="white"/>
+      </visual>
+   </link>
+   <link name="robot0:MFJ3_jointbody">
+      <inertial>
+         <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+         <mass value="0.001"/>
+         <inertia ixx="1e-09" iyy="1e-09" izz="1e-09" ixy="0" ixz="0" iyz="0"/>
+      </inertial>
+   </link>
+   <joint type="revolute" name="robot0:MFJ3">
+      <parent link="robot0:palm"/>
+      <child link="robot0:MFJ3_jointbody"/>
+      <origin xyz="0.011 0.0 0.099" rpy="0.0 0.0 0.0"/>
+      <axis xyz="0.0 1.0 0.0"/>
+      <limit lower="-0.349" upper="0.349" effort="100" velocity="100"/>
+   </joint>
+   <joint type="fixed" name="robot0:MFJ3_offset">
+      <parent link="robot0:MFJ3_jointbody"/>
+      <child link="robot0:mfknuckle"/>
+      <origin xyz="-0.0 -0.0 -0.0" rpy="0.0 0.0 0.0"/>
+   </joint>
+   <link name="robot0:mfproximal">
+      <inertial>
+         <origin xyz="0.0 0.0 0.023" rpy="0.0 0.011315296524084362 1.5707963267948966"/>
+         <mass value="0.014"/>
+         <inertia ixx="1e-05" iyy="1e-05" izz="1e-05" ixy="0" ixz="0" iyz="0"/>
+      </inertial>
+      <visual name="robot0:F3">
+         <origin xyz="1.2109050075444518e-06 9.761867807593364e-06 0.022880663855845584" rpy="-7.130367859915891e-06 0.011893974846255873 1.5705985128531308"/>
+         <geometry>
+            <mesh filename="converted_robot0:F3.stl"/>
+         </geometry>
+         <material name="white"/>
+      </visual>
+   </link>
+   <link name="robot0:MFJ2_jointbody">
+      <inertial>
+         <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+         <mass value="0.001"/>
+         <inertia ixx="1e-09" iyy="1e-09" izz="1e-09" ixy="0" ixz="0" iyz="0"/>
+      </inertial>
+   </link>
+   <joint type="revolute" name="robot0:MFJ2">
+      <parent link="robot0:mfknuckle"/>
+      <child link="robot0:MFJ2_jointbody"/>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+      <axis xyz="1.0 0.0 0.0"/>
+      <limit lower="0.0" upper="1.571" effort="100" velocity="100"/>
+   </joint>
+   <joint type="fixed" name="robot0:MFJ2_offset">
+      <parent link="robot0:MFJ2_jointbody"/>
+      <child link="robot0:mfproximal"/>
+      <origin xyz="-0.0 -0.0 -0.0" rpy="0.0 0.0 0.0"/>
+   </joint>
+   <link name="robot0:mfmiddle">
+      <inertial>
+         <origin xyz="0.0 0.0 0.012" rpy="0.0 0.0 1.5707963267948963"/>
+         <mass value="0.012"/>
+         <inertia ixx="1e-05" iyy="1e-05" izz="1e-05" ixy="0" ixz="0" iyz="0"/>
+      </inertial>
+      <visual name="robot0:F2">
+         <origin xyz="-2.7107102874988925e-06 -3.218722724901653e-05 0.011475158468883542" rpy="-1.6030408530105524e-05 -0.0002661570742428232 1.5707963267948966"/>
+         <geometry>
+            <mesh filename="converted_robot0:F2.stl"/>
+         </geometry>
+         <material name="white"/>
+      </visual>
+   </link>
+   <link name="robot0:MFJ1_jointbody">
+      <inertial>
+         <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+         <mass value="0.001"/>
+         <inertia ixx="1e-09" iyy="1e-09" izz="1e-09" ixy="0" ixz="0" iyz="0"/>
+      </inertial>
+   </link>
+   <joint type="revolute" name="robot0:MFJ1">
+      <parent link="robot0:mfproximal"/>
+      <child link="robot0:MFJ1_jointbody"/>
+      <origin xyz="0.0 0.0 0.045" rpy="0.0 0.0 0.0"/>
+      <axis xyz="1.0 0.0 0.0"/>
+      <limit lower="0.0" upper="1.571" effort="100" velocity="100"/>
+   </joint>
+   <joint type="fixed" name="robot0:MFJ1_offset">
+      <parent link="robot0:MFJ1_jointbody"/>
+      <child link="robot0:mfmiddle"/>
+      <origin xyz="-0.0 -0.0 -0.0" rpy="0.0 0.0 0.0"/>
+   </joint>
+   <link name="robot0:mfdistal">
+      <inertial>
+         <origin xyz="0.0 0.0 0.015" rpy="-8.673929730061765e-19 0.008486512007798819 1.5707963267948966"/>
+         <mass value="0.01"/>
+         <inertia ixx="1e-05" iyy="1e-05" izz="1e-05" ixy="0" ixz="0" iyz="0"/>
+      </inertial>
+      <visual name="robot0:F1">
+         <origin xyz="7.811151132214205e-09 -4.4263651662937025e-05 0.015242626073421717" rpy="0.0 0.007786172590363849 1.5707963267948966"/>
+         <geometry>
+            <mesh filename="converted_robot0:F1.stl"/>
+         </geometry>
+         <material name="white"/>
+      </visual>
+   </link>
+   <link name="robot0:MFJ0_jointbody">
+      <inertial>
+         <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+         <mass value="0.001"/>
+         <inertia ixx="1e-09" iyy="1e-09" izz="1e-09" ixy="0" ixz="0" iyz="0"/>
+      </inertial>
+   </link>
+   <joint type="revolute" name="robot0:MFJ0">
+      <parent link="robot0:mfmiddle"/>
+      <child link="robot0:MFJ0_jointbody"/>
+      <origin xyz="0.0 0.0 0.025" rpy="0.0 0.0 0.0"/>
+      <axis xyz="1.0 0.0 0.0"/>
+      <limit lower="0.0" upper="1.571" effort="100" velocity="100"/>
+   </joint>
+   <joint type="fixed" name="robot0:MFJ0_offset">
+      <parent link="robot0:MFJ0_jointbody"/>
+      <child link="robot0:mfdistal"/>
+      <origin xyz="-0.0 -0.0 -0.0" rpy="0.0 0.0 0.0"/>
+   </joint>
+   <link name="robot0:rfknuckle">
+      <inertial>
+         <origin xyz="0.0 0.0 0.0" rpy="2.0477583421747254 0.011366961427066169 0.007130225047531689"/>
+         <mass value="0.008"/>
+         <inertia ixx="1e-05" iyy="1e-05" izz="1e-05" ixy="0" ixz="0" iyz="0"/>
+      </inertial>
+      <visual name="robot0:knuckle">
+         <origin xyz="-7.984755103175037e-06 0.00018549594562487147 0.00028291811195881977" rpy="2.0471337843138473 0.011288391859240576 0.0072775998130758905"/>
+         <geometry>
+            <mesh filename="converted_robot0:knuckle.stl"/>
+         </geometry>
+         <material name="white"/>
+      </visual>
+   </link>
+   <link name="robot0:RFJ3_jointbody">
+      <inertial>
+         <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+         <mass value="0.001"/>
+         <inertia ixx="1e-09" iyy="1e-09" izz="1e-09" ixy="0" ixz="0" iyz="0"/>
+      </inertial>
+   </link>
+   <joint type="revolute" name="robot0:RFJ3">
+      <parent link="robot0:palm"/>
+      <child link="robot0:RFJ3_jointbody"/>
+      <origin xyz="-0.011 0.0 0.095" rpy="0.0 0.0 0.0"/>
+      <axis xyz="0.0 1.0 0.0"/>
+      <limit lower="-0.349" upper="0.349" effort="100" velocity="100"/>
+   </joint>
+   <joint type="fixed" name="robot0:RFJ3_offset">
+      <parent link="robot0:RFJ3_jointbody"/>
+      <child link="robot0:rfknuckle"/>
+      <origin xyz="-0.0 -0.0 -0.0" rpy="0.0 0.0 0.0"/>
+   </joint>
+   <link name="robot0:rfproximal">
+      <inertial>
+         <origin xyz="0.0 0.0 0.023" rpy="0.0 0.011315296524084362 1.5707963267948966"/>
+         <mass value="0.014"/>
+         <inertia ixx="1e-05" iyy="1e-05" izz="1e-05" ixy="0" ixz="0" iyz="0"/>
+      </inertial>
+      <visual name="robot0:F3">
+         <origin xyz="1.2109050075444518e-06 9.761867807593364e-06 0.022880663855845584" rpy="-7.130367859915891e-06 0.011893974846255873 1.5705985128531308"/>
+         <geometry>
+            <mesh filename="converted_robot0:F3.stl"/>
+         </geometry>
+         <material name="white"/>
+      </visual>
+   </link>
+   <link name="robot0:RFJ2_jointbody">
+      <inertial>
+         <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+         <mass value="0.001"/>
+         <inertia ixx="1e-09" iyy="1e-09" izz="1e-09" ixy="0" ixz="0" iyz="0"/>
+      </inertial>
+   </link>
+   <joint type="revolute" name="robot0:RFJ2">
+      <parent link="robot0:rfknuckle"/>
+      <child link="robot0:RFJ2_jointbody"/>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+      <axis xyz="1.0 0.0 0.0"/>
+      <limit lower="0.0" upper="1.571" effort="100" velocity="100"/>
+   </joint>
+   <joint type="fixed" name="robot0:RFJ2_offset">
+      <parent link="robot0:RFJ2_jointbody"/>
+      <child link="robot0:rfproximal"/>
+      <origin xyz="-0.0 -0.0 -0.0" rpy="0.0 0.0 0.0"/>
+   </joint>
+   <link name="robot0:rfmiddle">
+      <inertial>
+         <origin xyz="0.0 0.0 0.012" rpy="0.0 0.0 1.5707963267948963"/>
+         <mass value="0.012"/>
+         <inertia ixx="1e-05" iyy="1e-05" izz="1e-05" ixy="0" ixz="0" iyz="0"/>
+      </inertial>
+      <visual name="robot0:F2">
+         <origin xyz="-2.7107102874988925e-06 -3.218722724901653e-05 0.011475158468883542" rpy="-1.6030408530105524e-05 -0.0002661570742428232 1.5707963267948966"/>
+         <geometry>
+            <mesh filename="converted_robot0:F2.stl"/>
+         </geometry>
+         <material name="white"/>
+      </visual>
+   </link>
+   <link name="robot0:RFJ1_jointbody">
+      <inertial>
+         <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+         <mass value="0.001"/>
+         <inertia ixx="1e-09" iyy="1e-09" izz="1e-09" ixy="0" ixz="0" iyz="0"/>
+      </inertial>
+   </link>
+   <joint type="revolute" name="robot0:RFJ1">
+      <parent link="robot0:rfproximal"/>
+      <child link="robot0:RFJ1_jointbody"/>
+      <origin xyz="0.0 0.0 0.045" rpy="0.0 0.0 0.0"/>
+      <axis xyz="1.0 0.0 0.0"/>
+      <limit lower="0.0" upper="1.571" effort="100" velocity="100"/>
+   </joint>
+   <joint type="fixed" name="robot0:RFJ1_offset">
+      <parent link="robot0:RFJ1_jointbody"/>
+      <child link="robot0:rfmiddle"/>
+      <origin xyz="-0.0 -0.0 -0.0" rpy="0.0 0.0 0.0"/>
+   </joint>
+   <link name="robot0:rfdistal">
+      <inertial>
+         <origin xyz="0.0 0.0 0.015" rpy="-8.673929730061765e-19 0.008486512007798819 1.5707963267948966"/>
+         <mass value="0.01"/>
+         <inertia ixx="1e-05" iyy="1e-05" izz="1e-05" ixy="0" ixz="0" iyz="0"/>
+      </inertial>
+      <visual name="robot0:F1">
+         <origin xyz="7.811151132214205e-09 -4.4263651662937025e-05 0.016242626073421716" rpy="0.0 0.007786172590363849 1.5707963267948966"/>
+         <geometry>
+            <mesh filename="converted_robot0:F1.stl"/>
+         </geometry>
+         <material name="white"/>
+      </visual>
+   </link>
+   <link name="robot0:RFJ0_jointbody">
+      <inertial>
+         <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+         <mass value="0.001"/>
+         <inertia ixx="1e-09" iyy="1e-09" izz="1e-09" ixy="0" ixz="0" iyz="0"/>
+      </inertial>
+   </link>
+   <joint type="revolute" name="robot0:RFJ0">
+      <parent link="robot0:rfmiddle"/>
+      <child link="robot0:RFJ0_jointbody"/>
+      <origin xyz="0.0 0.0 0.025" rpy="0.0 0.0 0.0"/>
+      <axis xyz="1.0 0.0 0.0"/>
+      <limit lower="0.0" upper="1.571" effort="100" velocity="100"/>
+   </joint>
+   <joint type="fixed" name="robot0:RFJ0_offset">
+      <parent link="robot0:RFJ0_jointbody"/>
+      <child link="robot0:rfdistal"/>
+      <origin xyz="-0.0 -0.0 -0.0" rpy="0.0 0.0 0.0"/>
+   </joint>
+   <link name="robot0:lfmetacarpal">
+      <inertial>
+         <origin xyz="-0.014 0.001 0.014" rpy="-0.22019365940569408 0.038757914465076926 1.5480065383653392"/>
+         <mass value="0.075"/>
+         <inertia ixx="1e-05" iyy="1e-05" izz="1e-05" ixy="0" ixz="0" iyz="0"/>
+      </inertial>
+      <visual name="robot0:lfmetacarpal">
+         <origin xyz="-0.01353154432563756 0.0006606416803077212 0.01333776130421415" rpy="-0.2226475243997678 0.03887298278178575 1.54841336766586"/>
+         <geometry>
+            <mesh filename="converted_robot0:lfmetacarpal.stl"/>
+         </geometry>
+         <material name="white"/>
+      </visual>
+   </link>
+   <link name="robot0:LFJ4_jointbody">
+      <inertial>
+         <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+         <mass value="0.001"/>
+         <inertia ixx="1e-09" iyy="1e-09" izz="1e-09" ixy="0" ixz="0" iyz="0"/>
+      </inertial>
+   </link>
+   <joint type="revolute" name="robot0:LFJ4">
+      <parent link="robot0:palm"/>
+      <child link="robot0:LFJ4_jointbody"/>
+      <origin xyz="-0.017 0.0 0.044" rpy="0.0 0.0 0.0"/>
+      <axis xyz="0.5709765904396781 0.0 0.82096634107001"/>
+      <limit lower="0.0" upper="0.785" effort="100" velocity="100"/>
+   </joint>
+   <joint type="fixed" name="robot0:LFJ4_offset">
+      <parent link="robot0:LFJ4_jointbody"/>
+      <child link="robot0:lfmetacarpal"/>
+      <origin xyz="-0.0 -0.0 -0.0" rpy="0.0 0.0 0.0"/>
+   </joint>
+   <link name="robot0:lfknuckle">
+      <inertial>
+         <origin xyz="0.0 0.0 0.0" rpy="2.0477583421747254 0.011366961427066169 0.007130225047531689"/>
+         <mass value="0.008"/>
+         <inertia ixx="1e-05" iyy="1e-05" izz="1e-05" ixy="0" ixz="0" iyz="0"/>
+      </inertial>
+      <visual name="robot0:knuckle">
+         <origin xyz="-7.984755103175037e-06 0.00018549594562487147 0.00028291811195881977" rpy="2.0471337843138473 0.011288391859240576 0.0072775998130758905"/>
+         <geometry>
+            <mesh filename="converted_robot0:knuckle.stl"/>
+         </geometry>
+         <material name="white"/>
+      </visual>
+   </link>
+   <link name="robot0:LFJ3_jointbody">
+      <inertial>
+         <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+         <mass value="0.001"/>
+         <inertia ixx="1e-09" iyy="1e-09" izz="1e-09" ixy="0" ixz="0" iyz="0"/>
+      </inertial>
+   </link>
+   <joint type="revolute" name="robot0:LFJ3">
+      <parent link="robot0:lfmetacarpal"/>
+      <child link="robot0:LFJ3_jointbody"/>
+      <origin xyz="-0.017 0.0 0.044" rpy="0.0 0.0 0.0"/>
+      <axis xyz="0.0 1.0 0.0"/>
+      <limit lower="-0.349" upper="0.349" effort="100" velocity="100"/>
+   </joint>
+   <joint type="fixed" name="robot0:LFJ3_offset">
+      <parent link="robot0:LFJ3_jointbody"/>
+      <child link="robot0:lfknuckle"/>
+      <origin xyz="-0.0 -0.0 -0.0" rpy="0.0 0.0 0.0"/>
+   </joint>
+   <link name="robot0:lfproximal">
+      <inertial>
+         <origin xyz="0.0 0.0 0.023" rpy="0.0 0.011315296524084362 1.5707963267948966"/>
+         <mass value="0.014"/>
+         <inertia ixx="1e-05" iyy="1e-05" izz="1e-05" ixy="0" ixz="0" iyz="0"/>
+      </inertial>
+      <visual name="robot0:F3">
+         <origin xyz="1.2109050075444518e-06 9.761867807593364e-06 0.022880663855845584" rpy="-7.130367859915891e-06 0.011893974846255873 1.5705985128531308"/>
+         <geometry>
+            <mesh filename="converted_robot0:F3.stl"/>
+         </geometry>
+         <material name="white"/>
+      </visual>
+   </link>
+   <link name="robot0:LFJ2_jointbody">
+      <inertial>
+         <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+         <mass value="0.001"/>
+         <inertia ixx="1e-09" iyy="1e-09" izz="1e-09" ixy="0" ixz="0" iyz="0"/>
+      </inertial>
+   </link>
+   <joint type="revolute" name="robot0:LFJ2">
+      <parent link="robot0:lfknuckle"/>
+      <child link="robot0:LFJ2_jointbody"/>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+      <axis xyz="1.0 0.0 0.0"/>
+      <limit lower="0.0" upper="1.571" effort="100" velocity="100"/>
+   </joint>
+   <joint type="fixed" name="robot0:LFJ2_offset">
+      <parent link="robot0:LFJ2_jointbody"/>
+      <child link="robot0:lfproximal"/>
+      <origin xyz="-0.0 -0.0 -0.0" rpy="0.0 0.0 0.0"/>
+   </joint>
+   <link name="robot0:lfmiddle">
+      <inertial>
+         <origin xyz="0.0 0.0 0.012" rpy="0.0 0.0 1.5707963267948963"/>
+         <mass value="0.012"/>
+         <inertia ixx="1e-05" iyy="1e-05" izz="1e-05" ixy="0" ixz="0" iyz="0"/>
+      </inertial>
+      <visual name="robot0:F2">
+         <origin xyz="-2.7107102874988925e-06 -3.218722724901653e-05 0.011475158468883542" rpy="-1.6030408530105524e-05 -0.0002661570742428232 1.5707963267948966"/>
+         <geometry>
+            <mesh filename="converted_robot0:F2.stl"/>
+         </geometry>
+         <material name="white"/>
+      </visual>
+   </link>
+   <link name="robot0:LFJ1_jointbody">
+      <inertial>
+         <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+         <mass value="0.001"/>
+         <inertia ixx="1e-09" iyy="1e-09" izz="1e-09" ixy="0" ixz="0" iyz="0"/>
+      </inertial>
+   </link>
+   <joint type="revolute" name="robot0:LFJ1">
+      <parent link="robot0:lfproximal"/>
+      <child link="robot0:LFJ1_jointbody"/>
+      <origin xyz="0.0 0.0 0.045" rpy="0.0 0.0 0.0"/>
+      <axis xyz="1.0 0.0 0.0"/>
+      <limit lower="0.0" upper="1.571" effort="100" velocity="100"/>
+   </joint>
+   <joint type="fixed" name="robot0:LFJ1_offset">
+      <parent link="robot0:LFJ1_jointbody"/>
+      <child link="robot0:lfmiddle"/>
+      <origin xyz="-0.0 -0.0 -0.0" rpy="0.0 0.0 0.0"/>
+   </joint>
+   <link name="robot0:lfdistal">
+      <inertial>
+         <origin xyz="0.0 0.0 0.015" rpy="-8.673929730061765e-19 0.008486512007798819 1.5707963267948966"/>
+         <mass value="0.01"/>
+         <inertia ixx="1e-05" iyy="1e-05" izz="1e-05" ixy="0" ixz="0" iyz="0"/>
+      </inertial>
+      <visual name="robot0:F1">
+         <origin xyz="7.811151132214205e-09 -4.4263651662937025e-05 0.016242626073421716" rpy="0.0 0.007786172590363849 1.5707963267948966"/>
+         <geometry>
+            <mesh filename="converted_robot0:F1.stl"/>
+         </geometry>
+         <material name="white"/>
+      </visual>
+   </link>
+   <link name="robot0:LFJ0_jointbody">
+      <inertial>
+         <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+         <mass value="0.001"/>
+         <inertia ixx="1e-09" iyy="1e-09" izz="1e-09" ixy="0" ixz="0" iyz="0"/>
+      </inertial>
+   </link>
+   <joint type="revolute" name="robot0:LFJ0">
+      <parent link="robot0:lfmiddle"/>
+      <child link="robot0:LFJ0_jointbody"/>
+      <origin xyz="0.0 0.0 0.025" rpy="0.0 0.0 0.0"/>
+      <axis xyz="1.0 0.0 0.0"/>
+      <limit lower="0.0" upper="1.571" effort="100" velocity="100"/>
+   </joint>
+   <joint type="fixed" name="robot0:LFJ0_offset">
+      <parent link="robot0:LFJ0_jointbody"/>
+      <child link="robot0:lfdistal"/>
+      <origin xyz="-0.0 -0.0 -0.0" rpy="0.0 0.0 0.0"/>
+   </joint>
+   <link name="robot0:thbase">
+      <inertial>
+         <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+         <mass value="0.01"/>
+         <inertia ixx="1e-05" iyy="1e-05" izz="1e-05" ixy="0" ixz="0" iyz="0"/>
+      </inertial>
+   </link>
+   <link name="robot0:THJ4_jointbody">
+      <inertial>
+         <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+         <mass value="0.001"/>
+         <inertia ixx="1e-09" iyy="1e-09" izz="1e-09" ixy="0" ixz="0" iyz="0"/>
+      </inertial>
+   </link>
+   <joint type="revolute" name="robot0:THJ4">
+      <parent link="robot0:palm"/>
+      <child link="robot0:THJ4_jointbody"/>
+      <origin xyz="0.034 -0.009 0.029" rpy="0.0 0.7850000000000001 0.0"/>
+      <axis xyz="0.0 0.0 -1.0"/>
+      <limit lower="-1.047" upper="1.047" effort="100" velocity="100"/>
+   </joint>
+   <joint type="fixed" name="robot0:THJ4_offset">
+      <parent link="robot0:THJ4_jointbody"/>
+      <child link="robot0:thbase"/>
+      <origin xyz="-0.0 -0.0 -0.0" rpy="0.0 0.0 0.0"/>
+   </joint>
+   <link name="robot0:thproximal">
+      <inertial>
+         <origin xyz="0.0 0.0 0.017" rpy="0.0003816931001962968 0.001962419550433303 0.38420543350573505"/>
+         <mass value="0.016"/>
+         <inertia ixx="1e-05" iyy="1e-05" izz="1e-05" ixy="0" ixz="0" iyz="0"/>
+      </inertial>
+      <visual name="robot0:TH3_z">
+         <origin xyz="-6.360967064216368e-06 -2.5983991696137005e-05 0.01668455805174587" rpy="-2.126562441803577e-06 0.0010929410093996061 0.3846601877646862"/>
+         <geometry>
+            <mesh filename="converted_robot0:TH3_z.stl"/>
+         </geometry>
+         <material name="white"/>
+      </visual>
+   </link>
+   <link name="robot0:THJ3_jointbody">
+      <inertial>
+         <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+         <mass value="0.001"/>
+         <inertia ixx="1e-09" iyy="1e-09" izz="1e-09" ixy="0" ixz="0" iyz="0"/>
+      </inertial>
+   </link>
+   <joint type="revolute" name="robot0:THJ3">
+      <parent link="robot0:thbase"/>
+      <child link="robot0:THJ3_jointbody"/>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+      <axis xyz="1.0 0.0 0.0"/>
+      <limit lower="0.0" upper="1.222" effort="100" velocity="100"/>
+   </joint>
+   <joint type="fixed" name="robot0:THJ3_offset">
+      <parent link="robot0:THJ3_jointbody"/>
+      <child link="robot0:thproximal"/>
+      <origin xyz="-0.0 -0.0 -0.0" rpy="0.0 0.0 0.0"/>
+   </joint>
+   <link name="robot0:thhub">
+      <inertial>
+         <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+         <mass value="0.002"/>
+         <inertia ixx="1e-05" iyy="1e-05" izz="1e-05" ixy="0" ixz="0" iyz="0"/>
+      </inertial>
+   </link>
+   <link name="robot0:THJ2_jointbody">
+      <inertial>
+         <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+         <mass value="0.001"/>
+         <inertia ixx="1e-09" iyy="1e-09" izz="1e-09" ixy="0" ixz="0" iyz="0"/>
+      </inertial>
+   </link>
+   <joint type="revolute" name="robot0:THJ2">
+      <parent link="robot0:thproximal"/>
+      <child link="robot0:THJ2_jointbody"/>
+      <origin xyz="0.0 0.0 0.038" rpy="0.0 0.0 0.0"/>
+      <axis xyz="1.0 0.0 0.0"/>
+      <limit lower="-0.209" upper="0.209" effort="100" velocity="100"/>
+   </joint>
+   <joint type="fixed" name="robot0:THJ2_offset">
+      <parent link="robot0:THJ2_jointbody"/>
+      <child link="robot0:thhub"/>
+      <origin xyz="-0.0 -0.0 -0.0" rpy="0.0 0.0 0.0"/>
+   </joint>
+   <link name="robot0:thmiddle">
+      <inertial>
+         <origin xyz="0.0 0.0 0.016" rpy="-0.002042080886871353 -0.01399363110770424 0.006014270301537724"/>
+         <mass value="0.016"/>
+         <inertia ixx="1e-05" iyy="1e-05" izz="1e-05" ixy="0" ixz="0" iyz="0"/>
+      </inertial>
+      <visual name="robot0:TH2_z">
+         <origin xyz="7.479638378150726e-05 -4.506971924920631e-05 0.015348397611008651" rpy="0.0 -0.0009035457653698842 0.0"/>
+         <geometry>
+            <mesh filename="converted_robot0:TH2_z.stl"/>
+         </geometry>
+         <material name="white"/>
+      </visual>
+   </link>
+   <link name="robot0:THJ1_jointbody">
+      <inertial>
+         <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+         <mass value="0.001"/>
+         <inertia ixx="1e-09" iyy="1e-09" izz="1e-09" ixy="0" ixz="0" iyz="0"/>
+      </inertial>
+   </link>
+   <joint type="revolute" name="robot0:THJ1">
+      <parent link="robot0:thhub"/>
+      <child link="robot0:THJ1_jointbody"/>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+      <axis xyz="0.0 1.0 0.0"/>
+      <limit lower="-0.524" upper="0.524" effort="100" velocity="100"/>
+   </joint>
+   <joint type="fixed" name="robot0:THJ1_offset">
+      <parent link="robot0:THJ1_jointbody"/>
+      <child link="robot0:thmiddle"/>
+      <origin xyz="-0.0 -0.0 -0.0" rpy="0.0 0.0 0.0"/>
+   </joint>
+   <link name="robot0:thdistal">
+      <inertial>
+         <origin xyz="0.0 0.0 0.016" rpy="-0.01050381536782631 -0.09396984019864618 0.01050381536782631"/>
+         <mass value="0.016"/>
+         <inertia ixx="1e-05" iyy="1e-05" izz="1e-05" ixy="0" ixz="0" iyz="0"/>
+      </inertial>
+      <visual name="robot0:TH1_z">
+         <origin xyz="0.00015896015287282335 -2.4403496540508268e-05 0.015948989961727226" rpy="-0.01023362447585024 -0.09457409217332846 0.010363263512894247"/>
+         <geometry>
+            <mesh filename="converted_robot0:TH1_z.stl"/>
+         </geometry>
+         <material name="white"/>
+      </visual>
+   </link>
+   <link name="robot0:THJ0_jointbody">
+      <inertial>
+         <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+         <mass value="0.001"/>
+         <inertia ixx="1e-09" iyy="1e-09" izz="1e-09" ixy="0" ixz="0" iyz="0"/>
+      </inertial>
+   </link>
+   <joint type="revolute" name="robot0:THJ0">
+      <parent link="robot0:thmiddle"/>
+      <child link="robot0:THJ0_jointbody"/>
+      <origin xyz="0.0 0.0 0.032" rpy="0.0 0.0 0.0"/>
+      <axis xyz="0.0 1.0 0.0"/>
+      <limit lower="-1.571" upper="0.0" effort="100" velocity="100"/>
+   </joint>
+   <joint type="fixed" name="robot0:THJ0_offset">
+      <parent link="robot0:THJ0_jointbody"/>
+      <child link="robot0:thdistal"/>
+      <origin xyz="-0.0 -0.0 -0.0" rpy="0.0 0.0 0.0"/>
+   </joint>
+   <material name="white">
+      <color rgba="1 1 1 1"/>
+   </material>
+</robot>

@@ -1,0 +1,30 @@
+# 🤚 HaMeR Hand Reconstruction Server Config
+server:
+  host: "0.0.0.0"
+  port: 6002
+
+model:
+  # 🧠 HaMeR checkpoint
+  checkpoint: ../checkpoints/hamer/hamer_ckpts/checkpoints/hamer.ckpt
+  # 🔍 Body detector: vitdet or regnety
+  body_detector: vitdet
+  # 🔍 VitDet checkpoint
+  vitdet_checkpoint: ../checkpoints/hamer/detectron2/model_final_f05665.pkl
+  # 🦴 ViTPose config & checkpoint
+  vitpose_config: thirdparty/hamer/third-party/ViTPose/configs/wholebody/2d_kpt_sview_rgb_img/topdown_heatmap/coco-wholebody/ViTPose_huge_wholebody_256x192.py
+  vitpose_ckpt: ../checkpoints/hamer/vitpose_ckpts/vitpose+_huge/wholebody.pth
+
+inference:
+  batch_size: 1
+  rescale_factor: 2.0
+
+# 🔧 Hydra output control
+hydra:
+  run:
+    dir: .
+  output_subdir: null
+  job_logging:
+    handlers:
+      file:
+        filename: log/server_hamer.log
+        mode: w

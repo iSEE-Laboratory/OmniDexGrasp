@@ -1,0 +1,27 @@
+# Human-to-Robot hand retargeting config
+datasets: ../datasets
+output: ../out
+
+# Available hand types: inspire, wuji, shadow
+hand_types: [inspire]
+n_obj_pts: 2048
+device: cuda
+
+assets_root: ../assets/robo
+mano_assets_root: ../assets/mano
+
+optim:
+  stage1:
+    lr: 0.01
+    iters: 40
+  stage2:
+    lr: 0.001
+    iters: 100
+  weights:
+    finger: 1.0
+    pen: 10.0
+
+hydra:
+  run:
+    dir: .
+  output_subdir: null
